@@ -4,15 +4,18 @@ and commands to turn to the left (L) or right (R) a number of notches, then retu
 was set to 0 given a set of commands.
 """
 
-import pandas as pd
+def extract(txt_path: str)->list:
+    """
+    The list provided by Advent of Code is very long and not organized. After transferring to .txt file,
+    we extract each line as the elements of a Python list.
+    """
+    txt_file = txt_path
+    command_array = []
 
-def extract(csv_path: str)->list:
-    """
-    The list provided by Advent of Code is very long and not organized. After transferring to a CSV in a column
-    named "commands", we extract the column inputs into a Python list using pandas.
-    """
-    df = pd.read_csv(csv_path)
-    command_array = df['commands'].to_list()
+    with open(txt_file, 'r') as file:
+        command_array = file.readlines()
+    
+    command_array = [command.strip() for command in command_array]
 
     return command_array
 
@@ -75,8 +78,8 @@ def lock2(commands: list)->int:
 
 test = ['L68', 'L30', 'R48', 'L5', 'R60', 'L55', 'L1', 'L99', 'R14', 'L82'] # example from website
 
-# print(lock1(test))
-# print(lock2(test))
+assert(lock1(test)) == 3
+assert(lock2(test)) == 6
 
-# print(lock1(extract('day1_input.csv')))
-print(lock2(extract('day1_input.csv')))
+print(lock1(extract('day1_input.txt')))
+print(lock2(extract('day1_input.txt')))
