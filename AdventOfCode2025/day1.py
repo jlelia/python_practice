@@ -34,7 +34,7 @@ def turn(command: str)->int:
 
     return num
 
-def lock1(commands: list)->int:
+def lock_v1(commands: list)->int:
     """
     Rotates the lock and counts each time a rotation lands on zero. (Puzzle 1)
     """
@@ -52,7 +52,7 @@ def lock1(commands: list)->int:
 
     return counter
 
-def lock2(commands: list)->int:
+def lock_v2(commands: list)->int:
     """
     Rotates the lock and counts each time a rotation passes or lands on zero. (Puzzle 2)
     """
@@ -78,8 +78,8 @@ def lock2(commands: list)->int:
 
 test = ['L68', 'L30', 'R48', 'L5', 'R60', 'L55', 'L1', 'L99', 'R14', 'L82'] # example from website
 
-assert(lock1(test)) == 3
-assert(lock2(test)) == 6
+assert(lock_v1(test)) == 3
+assert(lock_v2(test)) == 6
 
-print(lock1(extract('day1_input.txt')))
-print(lock2(extract('day1_input.txt')))
+print(lock_v1(extract('day1_input.txt')))
+print(lock_v2(extract('day1_input.txt')))
